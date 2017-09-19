@@ -1,0 +1,299 @@
+<div class="body" ng-controller="GraphController" ng-init="findWinesByUser()">
+ 
+
+
+<header ng-include="'/modules/core/client/views/header-graph.client.view.html'"></header>
+ 
+  <div class="inventory" style="margin-top:0px !important">
+    <div class="container-fluid">
+      <div class="row" style="background-color:#151c26;" > 
+       
+          <div class="col-md-12" style="background-color:#151c26;">
+            <div class="col-md-4" >
+
+             <div class="row" style="background-color:#151c26; color:#FFF; padding-top:5px; fontFamily:'Calibri (Body)'; font-size:14px;">
+                    <div class="col-md-12 col-md-offset-4">
+                      <label style="font-weight:bold; text-align:center; font-size:16px;fontFamily:'Calibri (Body)';letter-spacing: 3px;">COUNTRIES</label>
+                                           
+                    </div>
+                    <div class="col-md-12" id="countryBottleGraph"></div>
+                </div>
+
+
+
+             </div>
+            <div class="col-md-4" >
+              <div class="row" style="background-color:#151c26; color:#FFF; padding-top:5px; fontFamily:'Calibri (Body)'; font-size:14px;">
+                    <div class="col-md-12 col-md-offset-4">
+                      <label style="font-weight:bold; text-align:center; font-size:16px;fontFamily:'Calibri (Body)';letter-spacing: 3px;">VARIETALS</label>
+                                           
+                    </div>
+                    <div class="col-md-12" id="varietalBottleGraph"></div>
+                </div>
+
+             </div>
+            <div class="col-md-4">
+                     <div class="row" style="background-color:#151c26; color:#FFF; padding-top:5px; fontFamily:'Calibri (Body)'; font-size:14px;">
+                    <div class="col-md-12 col-md-offset-3">
+                      <label style="font-weight:bold; text-align:center; font-size:16px;fontFamily:'Calibri (Body)';letter-spacing: 3px;">VERTICALS</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                      <select name="wine_name" ng-model='wine_id' style="background-color:#151c26; border:none; color:#29c0d5;" required  ng-change="getVerticalGraphData()">
+                        <option value="{{wine._id}}" ng-repeat="wine in wines">{{wine.wine_name}}</option>
+                      </select>                      
+                    </div>
+                    <div class="col-md-12" id="verticalBottleGraph"></div>
+                </div>
+           
+            </div>
+
+          </div>
+        </div>
+        <div class="row" style="background-color:#151c26;color:#fff; padding-top:5px;font-size:16px;">
+        <div class="col-md-12" style="text-align:center;">
+                      <label style="font-weight:bold;fontFamily:'Calibri (Body)';letter-spacing: 3px;">TOP PRODUCERS</label>                   
+            </div>
+          <div class="col-md-12" id="producerBottleGraph" style="background-color:#151c26;">          
+
+          </div></div>
+
+          <div class="row" id="disGraph" style="background-color:#151c26; color:#fff; padding-top:5px; fontFamily:'Calibri (Body)'; font-size:16px;">
+
+            <div class="col-md-12" style="text-align:center;">
+                      <label style="font-weight:bold;fontFamily:'Calibri (Body)';letter-spacing: 3px;">TOP DISTRIBUTORS</label>                   
+            </div>
+
+                    
+         <div class="col-md-12">
+
+         <div class="col-md-3" id="Distributorgraph1"> </div>
+         <div class="col-md-3" id="Distributorgraph2"> </div>
+         <div class="col-md-3" id="Distributorgraph3"> </div>
+         <div class="col-md-3" id="Distributorgraph4"> </div>      
+
+         </div>
+
+         </div> <!-- row  -->
+
+          <div class="row" style="background-color:#151c26;">
+           <div class="col-md-12" style="background-color:#1c222e;padding:5px;"> 
+            <div class="col-md-3" style="background-color:#1c222e;height:270px;"> 
+             
+<table class="hoverTable" >
+    <caption style="color:white;"> <center style="font-weight:bold; text-align:center; font-size:16px; fontFamily: 'Calibri (Body)';letter-spacing: 3px;">RECENT PURCHASES</center> </caption>
+    <br>
+          <thead>
+            <tr>
+              <th>PRODUCER</th>
+              <th>QTY</th>              
+              <th>PRICE</th>
+              
+            </tr>
+          </thead>
+          <body >
+
+            <tr ng-repeat="transaction in lastFourTransaction " >
+              <td>{{transaction.producer}}</td>
+              <td>{{transaction.quantity}}</td>              
+              <td>{{authentication.user.currency_code}} {{transaction.price |number:2 }}</td>
+            </tr>
+           
+          </body>
+        </table>
+       
+            </div>
+
+             <div class="col-md-6" >
+                <div class="row" style="background-color:#1c222e; color:#FFF; padding-top:5px; fontFamily:'Calibri (Body)'; font-size:16px;">
+                  <div class="col-md-12" style="text-align:center;">
+                      <label style="font-weight:bold; padding-top:18px;fontFamily: 'Calibri (Body)';letter-spacing: 3px;">VINTAGES</label>                   
+                    </div>
+                    <div class="col-md-12" id="vintageGraph"></div>
+
+                </div>
+            </div>
+             <div class="col-md-3" style="background-color:#1c222e; "> 
+             
+<table class="regionTable" fixed-header>
+    <caption style="color:white;"> <center style="font-weight:bold; fontFamily: 'Calibri (Body)';letter-spacing: 3px;font-size:16px;">POPULAR REGIONS</center> </caption>
+    <br>
+          <thead>
+            <tr>
+              <th class="col-xs-2" style="text-align: left;">REGION</th>
+                           
+              <th class="col-xs-2" style="text-align: right; margin-right:2px;">BOTTLES</th>
+              
+            </tr>
+          </thead>
+          
+ <tbody class="flexcroll">
+            <tr ng-repeat="transaction in regionBottles " >
+            <td colspan="2">
+              <div class="progress " style="height:3px;width:100%;background:#505053;"
+             >
+      <div class="progress-bar" role="progressbar" aria-valuenow="20"  ng-style="{background: doc_classes_colors[$index % doc_classes_colors.length]}"
+  aria-valuemin="0" aria-valuemax="200" style="width:{{transaction.bottles}}%">
+  
+  </div>
+</div>
+<div>
+  <span style="float:left;">{{transaction.region}}</span><span style="float:right;">{{transaction.bottles }}</span>
+</div>
+            </td>            
+           </tr>
+         </tbody>
+        </table>
+       
+            </div>
+           </div>
+         </div>
+         
+
+    </div>
+  </div>
+
+
+
+
+<script type="text/ng-template" id="userSetting.html">
+  <div ng-include src="'/modules/users/client/views/settings/settings.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="addWine.html">
+  <div ng-include src="'/modules/wine/client/views/wine.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="wideDetails.html">
+  <div ng-include src="'/modules/wine/client/views/wine-details.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="mapView.html">
+  <div ng-include src="'/modules/wine/client/views/map-view.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="addBottle.html">
+  <div ng-include src="'/modules/wine/client/views/add-bottle.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="removeBottle.html">
+  <div ng-include src="'/modules/wine/client/views/remove-bottle.client.view.html'"></div>
+</script>
+<style style="text/css">
+
+    .hoverTable{
+    width:100%; 
+    border-collapse:collapse;
+    background: #1c222e; 
+    height:100%;
+  }
+  .hoverTable td{ 
+    padding:7px;  background: #1c222e;
+  }
+  /* Define the default color for all the table rows 
+ */
+  .hoverTable tr{
+    background:  #1c222e;
+    color:#ffffff;
+    border-bottom:1pt solid #7575a3;
+  }
+  .hoverTable th{
+    padding:7px;
+    background: #1c222e;
+    color:#7575a3;
+  }
+  /* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color:  #505053;
+    }
+
+
+
+     .regionTable{
+    width:100%; 
+    border-collapse:collapse;
+    background: #1c222e; 
+    height:100%;
+  }
+  .regionTable td{ 
+    padding:7px;  background: #1c222e;
+  }
+  .regionTable tbody{ 
+    height:300px;
+  }
+  /* Define the default color for all the table rows 
+ */
+  .regionTable tr{
+    background:  #1c222e;
+    color:#ffffff;
+    
+  }
+  .regionTable th{
+    padding:7px;
+    background: #1c222e;
+    color:#7575a3;
+  }
+  /* Define the hover highlight color for the table row */
+    .regionTable tr:hover { 
+     background-color:  #505053;
+    }
+
+    .flexcroll{            
+            overflow:scroll;
+           }
+.flexcroll{
+    scrollbar-face-color: #505053;
+    scrollbar-shadow-color: #FFFFFF;
+    scrollbar-highlight-color: #FFFFFF;
+    scrollbar-3dlight-color: #FFFFFF;
+    scrollbar-darkshadow-color: #FFFFFF;
+    scrollbar-track-color: #FFFFFF;
+    scrollbar-arrow-color: #FFFFFF;
+}
+
+/* Let's get this party started */
+.flexcroll::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+/* Track */
+.flexcroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+ 
+/* Handle */
+.flexcroll::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #505053; 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+     
+
+
+  
+ #disGraph canvas {
+    display: block;
+    position:absolute;
+    top:0;
+    left:0;
+}
+ #disGraph span {
+    display:block;
+    line-height:220px;
+    text-align:center;
+    width:220px;
+    font-family:sans-serif;
+    font-size:30px;
+    margin-left:5px;
+}
+
+ #disGraph input {
+    width: 200px;
+}
+
+ #disGraph label {
+  text-align:center;
+  margin-left:40px;
+  padding: 5px;
+}
+</style>

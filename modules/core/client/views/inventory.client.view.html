@@ -1,0 +1,102 @@
+<div class="body" ng-controller="InventoryController" ng-init="findWines()">
+  <header ng-include="'/modules/core/client/views/header-inventory.client.view.html'"></header>
+  <div class="inventory">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="asing_count">
+            <li class="active"><a href="">Current</a></li>
+            <li><a href="">Consumed</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="search_de_icon">
+            <li><a href="#" class="trash" ng-click="addWine(countries);"><i class="fa fa-plus"></i></a></li>
+            <li><a href="" class="trash"><i class="fa fa-download"></i></a></li>
+            <li>
+              <form class="search" action="" method="get">
+                <span class="search_box">
+                  <input name="s" id="s" type="text" value="" placeholder="Search"/>
+                </span>
+                <span class="sub_mit_text">
+                  <a href=""><i class="fa fa-search"></i></a>
+                </span>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!--{{wines}}-->
+  <div class="inventory_prodact_price">
+    <div class="container-fluid">
+     <div class="row">
+       <div class="table_price_list">
+        <table class="main-table">
+          <thead>
+            <tr>
+              <th ng-click="order('wine_id.wine_name')">Wine</th>
+              <th ng-click="order('wine_id.producer')">Producer</th>              
+              <th ng-click="order('wine_id.vintage_year')">Vintage</th>
+              <th ng-click="order('wine_id.wine_varietal')">Varietal</th>
+              <th ng-click="order('wine_id.country_code')">Country</th>
+              <th ng-click="order('wine_id.region')">Region</th>
+              <th ng-click="order('wine_id.ratings')">Community Rating</th>
+              <th ng-click="order('avg_cost_price')">Price</th>
+              <th ng-click="order('quantity')">Bottles</th>
+              <th ng-click="order('quantity * avg_cost_price')">Value</th>
+            </tr>
+          </thead>
+          <body>
+
+            <tr ng-click="showDetails(wine);" ng-repeat="wine in wines | orderBy:predicate:reverse ">
+              <td>{{wine.wine_id.wine_name}}</td>
+              <td>{{wine.wine_id.producer}}</td>
+              <td>{{wine.wine_id.vintage_year}}</td>
+              <td>{{wine.wine_id.wine_varietal}}</td>
+              <td>{{wine.wine_id.country_code}}</td>
+              <td>{{wine.wine_id.region}}</td>
+              <td>{{wine.wine_id.ratings}}</td>
+              <td>{{wine.avg_cost_price | setDecimal:2}}</td>
+              <td>{{wine.quantity}}</td>
+              <td>{{ wine.quantity * wine.avg_cost_price | setDecimal:2}}</td>
+            </tr>
+          </body>
+        </table>
+      </div>
+    </div>
+  </div>
+</div><!--inventory_prodact_price-->
+
+</div>
+
+
+
+
+<script type="text/ng-template" id="userSetting.html">
+  <div ng-include src="'/modules/users/client/views/settings/settings.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="addWine.html">
+  <div ng-include src="'/modules/wine/client/views/wine.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="wideDetails.html">
+  <div ng-include src="'/modules/wine/client/views/wine-details.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="mapView.html">
+  <div ng-include src="'/modules/wine/client/views/map-view.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="addBottle.html">
+  <div ng-include src="'/modules/wine/client/views/add-bottle.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="removeBottle.html">
+  <div ng-include src="'/modules/wine/client/views/remove-bottle.client.view.html'"></div>
+</script>

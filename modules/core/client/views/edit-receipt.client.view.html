@@ -1,0 +1,30 @@
+<div class="modal-header user-header">
+  <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+  <h2 class="modal-title" id="AccountSetting_tabs"> Edit Receipt</h2>
+</div>
+
+<div class="modal-body user_setting add-new-receipt">
+<uib-tabset active="active">
+<uib-tab index="0" heading="Receipt Details">
+<div class="wine-details" ng-include src="'/modules/core/client/views/view-receipt.details.client.view.html'"></div>
+</uib-tab>
+
+<uib-tab index="1" heading="Manage Assignment" disable='receiptDisable'>
+<div class="wine-details" ng-include src="'/modules/core/client/views/view-assignment.details.client.view.html'"></div>
+</uib-tab>
+</uib-tabset>
+ <!--  <tabset>
+    <tab>
+      <tab-heading> Receipt Details</tab-heading>
+      <div class="wine-details" ng-include src="'/modules/core/client/views/view-receipt.details.client.view.html'"></div>
+    </tab>
+
+    <tab>
+      <tab-heading>Manage Assignment</tab-heading>
+      <div class="wine-details receipt-assignment" ng-include src="'/modules/core/client/views/view-assignment.details.client.view.html'"></div>
+    </tab>
+  </tabset> -->
+</div>
+
+
+

@@ -1,0 +1,635 @@
+ <style type="text/css">
+.rightSelect {
+  direction: rtl;
+  padding-right:32px;
+}
+.rightSelect option {
+  direction: rtl;
+}
+ </style>
+ <form  method="post" name="testingDetail" ng-submit="updateTestingNode(testingDetail.$valid)" >
+   <div class="testing-notes testing-notes-edit clierfix">
+    <p style="padding-top: 20px; padding-bottom: 7px"><i class="fa fa-eye"></i> Appearance</p>
+    <div class="modal-body-box clearfix">
+    
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>Clarity</label>
+        </div>
+        <div class="col-lg-7">   
+          <select ng-model='editableWine.wine_id.tasting_notes.clarity' class="rightSelect">
+            <option value=""></option>
+            <option value="{{clarity}}" ng-selected="editableWine.wine_id.tasting_notes.clarity == clarity" ng-repeat="clarity in clarities">{{clarity}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>Intensity</label>
+        </div>
+        <div class="col-lg-7">
+          <select ng-model='editableWine.wine_id.tasting_notes.intensity' class="rightSelect">
+            <option value=""></option>
+            <option value="{{intensity}}" ng-repeat="intensity in intensities">{{intensity}}</option>
+          </select>
+        </div>
+      </div>
+    </div> <!-- modal-body-box -->
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>COLOUR</label>
+        </div>
+        <div class="col-lg-7" >
+          <select ng-model='editableWine.wine_id.tasting_notes.colour' class="rightSelect">
+            <option value=""></option>            
+              <option value="{{colour}}" ng-repeat="colour in colours">{{colour | capitalize:true}}</option>
+            
+          </select>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>VISCOSITY</label>
+        </div>
+        <div class="col-lg-7">
+          <select ng-model='editableWine.wine_id.tasting_notes.viscosity' class="rightSelect">
+            <option value=""></option>
+            <option value="{{viscosity}}" ng-repeat="viscosity in viscosities">{{viscosity}}</option>
+          </select>
+        </div>
+      </div>
+    </div><!--modal-body-box-->
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>OTHER</label>
+        </div>
+        <div class="col-lg-7" >
+          <select ng-model='editableWine.wine_id.tasting_notes.other' class="rightSelect">
+            <option value=""></option>           
+              <option value="{{other}}" ng-repeat="other in others">{{other | capitalize:true}}</option>
+            
+          </select>
+        </div>
+      </div>
+      </div>
+
+
+
+    <p><img src="/modules/wine/client/images/tr_15.png" /> Nose</p>
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>Conditions</label>
+        </div>
+        <div class="col-lg-7">
+          <select ng-model='editableWine.wine_id.tasting_notes.condition'class="rightSelect">
+            <option value=""></option>
+            <option value="{{condition}}" ng-repeat="condition in conditions">{{condition}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>intensity</label>
+        </div>
+        <div class="col-lg-7">
+          <select ng-model='editableWine.wine_id.tasting_notes.noseIntensity' class="rightSelect">
+            <option value=""></option>
+            <option value="{{intensity}}" ng-repeat="intensity in noseIntensities">{{intensity}}</option>
+          </select>
+        </div>
+      </div>
+    </div><!--modal-body-box-->
+
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="col-lg-5">
+          <label>Aroma</label>
+        </div>
+        <div class="col-lg-7">
+
+          <select ng-model='editableWine.wine_id.tasting_notes.aroma' class="rightSelect">
+           <option value=""></option>
+           <option value="{{aroma}}" ng-repeat="aroma in aromas">{{aroma}}</option>
+                        
+    </select>
+  </div>
+</div>
+<div class="col-md-6 col-sm-6 col-xs-12">
+  <div class="col-lg-5">
+    <label>SIMPLICITY</label>
+  </div>
+  <div class="col-lg-7">
+    <select ng-model='editableWine.wine_id.tasting_notes.simplicity' class="rightSelect">
+      <option value=""></option>
+      <option value="{{simplicity}}" ng-repeat="simplicity in simplicities">{{simplicity}}</option>
+    </select>
+  </div>
+</div>
+</div><!--modal-body-box-->
+ <div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Autolytic</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.autolytic' class="rightSelect">
+        <option value=""></option>
+        <option value="{{autolytic}}" ng-repeat="autolytic in autolytics">{{autolytic}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Dairy & Oak</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.nosedairy_oak' class="rightSelect">
+        <option value=""></option>
+        <option value="{{nosedairy_oak}}" ng-repeat="nosedairy_oak in dairieoaks">{{nosedairy_oak}}</option>
+      </select>
+    </div>
+  </div>
+</div> 
+
+<div class="modal-body-box clearfix">
+  
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>KERNEL</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.kernel' class="rightSelect">
+        <option value=""></option>
+        <option value="{{kernel}}" ng-repeat="kernel in kernels">{{kernel}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Mineral</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.mineral' class="rightSelect">
+        <option value=""></option>
+        <option value="{{mineral}}" ng-repeat="mineral in minerals">{{mineral}}</option>
+      </select>
+    </div>
+  </div>
+</div> 
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Animal</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.animal' class="rightSelect">
+        <option value=""></option>
+        <option value="{{animal}}" ng-repeat="animal in animals">{{animal}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Maturity</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.maturity' class="rightSelect">
+        <option value=""></option>
+        <option value="{{maturity}}" ng-repeat="maturity in maturities">{{maturity}}</option>
+      </select>
+    </div>
+  </div>
+</div> 
+
+
+
+
+
+
+
+<p><img src="/modules/wine/client/images/tr_16.png" /> Palate</p>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>SWEETNESS</label>
+    </div>
+    <div class="col-lg-7">
+    <select ng-model='editableWine.wine_id.tasting_notes.sweetness' class="rightSelect">
+        <option value=""></option>
+         <option value="{{sweetness}}" ng-repeat="sweetness in sweetnesses">{{sweetness}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>ACIDITY</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.acidity' class="rightSelect">
+        <option value=""></option>
+        <option value="{{acidity}}" ng-repeat="acidity in acidities">{{acidity}}</option>
+      </select>
+    </div>
+  </div>
+
+</div><!--modal-body-box-->
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>TANNIN</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.tannin' class="rightSelect">
+        
+          <option value=""></option>
+         <option value="{{tannin}}" ng-repeat="tannin in tannins">{{tannin}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Nature</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.nature' class="rightSelect">
+        <option value=""></option>
+          <option value="{{nature}}" ng-repeat="nature in natures">{{nature}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>alcohol</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.alcohol' class="rightSelect">
+        <option value=""></option>
+         <option value="{{alcohol}}" ng-repeat="alcohol in alcohols">{{alcohol}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>body</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.body' class="rightSelect">
+        <option value=""></option>
+       <option value="{{body}}" ng-repeat="body in bodys">{{body}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="modal-body-box clearfix">
+  
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>flavour intensity</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.flavour_intensity' class="rightSelect">
+        <option value=""></option>
+         <option value="{{flavour_intensity}}" ng-repeat="flavour_intensity in flavour_intensities">{{flavour_intensity}}</option>
+
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>FLORAL</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.floral' class="rightSelect">
+        <option value=""></option>
+        <option value="{{floral}}" ng-repeat="floral in florals">{{floral}}</option>
+      </select>
+    </div>
+  </div>
+</div><!--modal-body-box-->
+
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>FRUITS</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.fruit' class="rightSelect">
+        <option value=""></option>
+        <option value="{{fruit}}" ng-repeat="fruit in fruits">{{fruit}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>SPICE</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.spice' class="rightSelect">  
+
+        <option value=""></option>
+        <option value="{{spice}}" ng-repeat="spice in spices">{{spice}}</option>
+      </select>
+    </div>
+  </div>
+  
+</div><!--modal-body-box-->
+
+
+
+
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>UNDER RIPENESS</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.under_ripness' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{under_ripness}}" ng-repeat="under_ripness in underripness">{{under_ripness}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>HERBACE & VEGAL</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.herbace_vegal' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{herbace_vegal}}" ng-repeat="herbace_vegal in herbacevegal">{{herbace_vegal}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal-body-box clearfix">
+ 
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>AUTOLYTIC</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.autolytic' class="rightSelect">   
+
+        <option value=""></option>
+        <option value="{{autolytic}}" ng-repeat="autolytic in autolytics">{{autolytic}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>DAIRY & OAK</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.palate_dairyoaks' class="rightSelect">   
+
+        <option value=""></option>
+        <option value="{{palate_dairyoaks}}" ng-repeat="palate_dairyoaks in dairieoaks">{{palate_dairyoaks}}</option>
+      </select>
+    </div>
+  </div>
+
+  
+</div>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>KERNEL</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.palate_kernel' class="rightSelect">    
+
+        <option value=""></option>
+        <option value="{{kernel}}" ng-repeat="kernel in kernels">{{kernel}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>ANIMAL</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.palate_animal' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{animal}}" ng-repeat="animal in animals">{{animal}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>MATURITY</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.palate_maturity' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{maturity}}" ng-repeat="maturity in maturities">{{maturity}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>Mineral</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.palate_mineral' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{mineral}}" ng-repeat="mineral in minerals">{{mineral}}</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>FINISH</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.finish' class="rightSelect">   
+
+        <option value=""></option>
+        <option value="{{finish}}" ng-repeat="finish in finishs">{{finish}}</option>
+      </select>
+    </div>
+  </div>
+
+  
+</div>
+<p><img src="/modules/wine/client/images/tr_17.png" /> Faults</p>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>ANISOLES</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.anisoles' class="rightSelect">    
+
+        <option value=""></option>
+        <option value="{{anisoles}}" ng-repeat="anisoles in anisoless">{{anisoles}}</option>
+      </select>
+    </div>
+  </div>
+ <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>BRETTANOMYCES</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.brettanomyce' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{brettanomyce}}" ng-repeat="brettanomyce in brettanomyces">{{brettanomyce}}</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>OXIDATION</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.oxidation' class="rightSelect">    
+
+        <option value=""></option>
+        <option value="{{oxidation}}" ng-repeat="oxidation in oxidations">{{oxidation}}</option>
+      </select>
+    </div>
+  </div>
+ <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>VOLATILE ACIDITY</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.volatile_acidity'>     
+
+        <option value=""></option>
+        <option value="{{volatile_acidity}}" ng-repeat="volatile_acidity in volatileacidities">{{volatile_acidity}}</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>REDUCTION</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.reduction' class="rightSelect">     
+
+        <option value=""></option>
+        <option value="{{reduction}}" ng-repeat="reduction in reductions">{{reduction}}</option>
+      </select>
+    </div>
+  </div>
+ <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>OTHER</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.faultother' class="rightSelect">    
+
+        <option value=""></option>
+        <option value="{{faultother}}" ng-repeat="faultother in faultOthers">{{faultother}}</option>
+      </select>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+<p><img src="/modules/wine/client/images/tr_17.png" /> Conclusion</p>
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>quality</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.quality' class="rightSelect">
+        <option value=""></option>
+        <option value="{{quality}}" ng-repeat="quality in qualities">{{quality}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label>ageability</label>
+    </div>
+    <div class="col-lg-7">
+      <select ng-model='editableWine.wine_id.tasting_notes.ageability' class="rightSelect">
+        <option value=""></option>
+        <option value="{{ageability}}" ng-repeat="ageability in ageabilities">{{ageability}}</option>
+      </select>
+    </div>
+  </div>
+
+  
+</div><!--modal-body-box-->
+
+<div class="modal-body-box clearfix">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-lg-5">
+      <label style="width:25%;">Drinking Window</label>
+    </div>
+    <div class="col-lg-7">
+
+  <!-- <button class="dropbtn">Dropdown</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div> -->
+
+ 
+      <select ng-model='editableWine.wine_id.tasting_notes.drinkingWindow' class="rightSelect">
+        <option value=""></option>
+        <option value="{{drinkingWindow}}" ng-repeat="drinkingWindow in drinkingWindows">{{drinkingWindow}}</option>
+      </select>
+    </div>
+
+
+  </div>
+ </div><!--modal-body-box-->
+
+<p><img src="/modules/wine/client/images/tr_18.png" />Drinking Notes</p>
+<div class="modal-body-box clearfix">
+  <div class="col-md-12 col-sm-12 col-xs-12 nose">
+    <textarea ng-model="editableWine.wine_id.tasting_notes.notes" class="form-control" rows="4"></textarea>
+    <br>
+
+  </div>
+</div><!--modal-body-box-->
+</div>
+<div class="modal-footer login save">
+  <div class="col-md-6 col-sm-6 col-xs-12 footer border-right">
+    <a href="#" class="btn btn-lg save" ng-click="close()">CANCEL</a>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 footer">
+    <button type="submit" class="show-signup btn-lg"> UPDATE</button>
+  </div>
+</div>
+</form>

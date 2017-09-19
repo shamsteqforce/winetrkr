@@ -1,0 +1,67 @@
+ <form  method="post" name="cellarForm" ng-submit="create(cellarForm.$valid)">
+  <div class="accountsetting_tabs detalis">
+    <div class="modal-body-box clearfix">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <label ng-class="{visibility: !cellar_name.length}">CELLAR</label>
+        <input type="text" name="cellar_name" ng-model='cellar_name' placeholder="CELLAR">
+      </div>
+    </div><!--modal-body-box-->
+
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !address_line1.length}">STREET (LINE 1)</label>
+        <input type="text" name="address_line1" ng-model='address_line1' placeholder="STREET (LINE 1)">
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !address_line2.length}">STREET (LINE 2)</label>
+        <input type="text" name="address_line2" ng-model='address_line2' placeholder="STREET (LINE 2)">
+      </div>
+    </div><!--modal-body-box-->
+
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !city.length}">CITY / TOWN</label>
+        <input type="text" name="city" ng-model='city' placeholder="CITY/TOWN">
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !postcode.length}">POST CODE</label>
+        <input type="text" name="postcode" ng-model='postcode' placeholder="POST CODE">
+      </div>
+    </div><!--modal-body-box-->
+
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12" ng-init="findCountry()">
+        <label ng-class="{visibility: !country.length}">COUNTRY</label>
+        <select name="country" ng-model='country' ng-change="changeCountry(countries)">
+          <option value="">COUNTRY</option>
+          <option ng-repeat="doc in countries" value="{{doc.title}}">{{doc.title}}</option>
+        </select>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !state.length}">STATE / REGION</label>
+        <select name="state" ng-model="state">
+          <option value="">STATE / REGION</option>
+          <option value="default">DEFAULT</option>
+          <option ng-repeat="doc in states" value="{{doc}}">{{doc}}</option>
+
+        </select>
+      </div>
+    </div><!--modal-body-box-->
+
+
+
+
+
+  </div>
+
+  <div class="modal-footer login save">
+    <div class="col-md-6 col-sm-6 col-xs-12 footer border-right">
+      <a href="#" class="btn btn-lg save" ng-click="close()">Cancel</a>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 footer">
+     <button type="submit" class="show-signup btn-lg" ng-disabled="isDisabled">Save Changes</button>
+   </div>
+ </div>
+</form>

@@ -1,0 +1,47 @@
+<section>
+  <div class="modal-header domaine_francois_villard clearfix">
+    <div class="row">
+      <div class="col-md-6 col-sm-6 col-xs-12 domaine_heading">
+           <h2>{{wine.wine_id.producer}}</h2>
+           <h3 style="font-size:14px !important">{{wine.wine_id.wine_name}}</h3>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <ul class="domaine_menu">
+          <li><a class="trash" ng-click="editTestingNotes()"><i class="fa fa-pencil"></i></a></li>
+          <li>
+            <ul class="row-details-menu">
+              <li class="dropdown fa-color" uib-dropdown>
+                <a class="dropdown-toggle trash" uib-dropdown-toggle role="button"><i class="fa fa-ellipsis-h"></i></a>
+                <ul class="dropdown-menu" id='dropdown-menu'>
+                  <li><a ng-click="addBottle(wine.wine_id._id);" href="#">Add Bottle <img class="pull-right" src="modules/core/client/images/sub_menu_su_1.png"></a></li>
+                  <!-- <li><a href="#">Sold </a><img src="modules/core/client/images/sub_menu_su_2.png"></li> -->
+                  <!-- <li><a href="#">Consumed </a><img src="modules/core/client/images/sub_menu_su_3.png"></li> -->
+                  <li><a href="#">Attach Receipt <img class="pull-right" src="modules/core/client/images/sub_menu_su_4.png"></a></li>
+                  <!-- <li><a href="#">upload Photo </a><img src="modules/core/client/images/sub_menu_su_5.png"></li> -->
+                  <li><a href="#" ng-click="deleteBottle(wine);">Delete <img class="pull-right" src="modules/core/client/images/sub_menu_su_6.png"></a></li>
+                  <li><a ng-click="removeBottle(wine);"  href="#">Remove Bottle <img class="pull-right" src="modules/core/client/images/sub_menu_su_7.png"></a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li><a class="trash" title="Close" data-placement="top" data-toggle="tooltip"  href="#" ng-click="close()"><i class="fa fa-times"></i></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="modal-body row-tab-details">
+     <uib-tabset>
+     <uib-tab>
+     <uib-tab-heading><b>VALUE / DETAILS</b></uib-tab-heading>
+     <div class="" ng-include src="'/modules/wine/client/views/value-details.client.view.html'"></div>
+   </uib-tab>
+
+   <uib-tab>
+   <uib-tab-heading><b>TASTING NOTES</b></uib-tab-heading>
+   <div ng-show="editTesting" ng-include src="'/modules/wine/client/views/edit-tasting-details.client.view.html'"></div>
+   <div ng-hide="editTesting" ng-include src="'/modules/wine/client/views/tasting-details.client.view.html'"></div>
+ </uib-tab>
+
+</uib-tabset>
+</div>
+</section>

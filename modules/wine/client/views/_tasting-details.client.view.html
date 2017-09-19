@@ -1,0 +1,203 @@
+<div class="delivered_location_tastins clierfix">
+
+  <form editable-form name="tableform" onaftersave="saveTable()" oncancel="cancel()">
+
+
+    <table class="table row-details">
+      <thead>
+        <th colspan="4"> <i class="fa fa-eye"></i> Appearance
+          <button type="button" class="" ng-show="!tableform.$visible" ng-click="tableform.$show()">Edit</button>
+          <button type="submit" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" class="">SAVE</button>
+          <button type="button" ng-show="tableform.$visible" ng-disabled="tableform.$waiting" ng-click="tableform.$cancel()" class="">CANCEL</button>
+        </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Clarity </td>
+          <td>
+            <span editable-select="wine.clarity" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+              <strong>{{ showStatus(wine.clarity) }}</strong>
+            </span>
+          </td>
+          <td>Intensity</td>
+          <td>
+            <span editable-select="wine.intensity" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+              <strong>{{ showStatus(wine.intensity) }}</strong>
+            </span>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td>Colour </td>
+          <td>
+            <span editable-select="wine.colour" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+              <strong>{{ showStatus(wine.colour) }}</strong>
+            </span>
+          </td>
+          <td>Viscosity </td>
+          <td>
+            <span editable-select="wine.viscosity" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+              <strong>{{ showStatus(wine.viscosity) }}</strong>
+            </span>
+          </td>
+        </tr>
+
+        <tr>
+          <th colspan="4"> <img src="/modules/wine/client/images/tr_15.png" /> Nose</th>
+        </tr>
+
+        <tr>
+          <td>Clean</td>
+          <td>
+           <span editable-select="wine.clean" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+            <strong>{{ showStatus(wine.clean) }}</strong>
+          </span>
+        </td>
+        <td>Intensity</td>
+        <td>
+         <span editable-select="wine.intensity" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+          <strong>{{ showStatus(wine.intensity) }}</strong>
+        </span>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>Aroma</td>
+      <td>
+        <span editable-select="wine.aroma" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+          <strong>{{ showStatus(wine.aroma) }}</strong>
+        </span>
+      </td>
+      <td>Deveopement</td>
+      <td>
+       <span editable-select="wine.deveopement" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+        <strong>{{ showStatus(wine.deveopement) }}</strong>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <td>Faults </td>
+    <td>
+     <span editable-select="wine.faults" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.faults) }}</strong>
+    </span>
+  </td>
+  <td></td>
+  <td></td>
+</tr>
+
+<tr>
+  <th colspan="4"> <img src="/modules/wine/client/images/tr_16.png" /> Palate</th>
+</tr>
+
+
+<tr>
+  <td>condition</td>
+  <td>
+   <span editable-select="wine.condition" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+    <strong>{{ showStatus(wine.condition) }}</strong>
+  </span>
+</td>
+<td>Intensity</td>
+<td>
+  <span editable-select="wine.intensity" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+    <strong>{{ showStatus(wine.intensity) }}</strong>
+  </span>
+</td>
+</tr>
+
+<tr>
+  <td>Tannin</td>
+  <td>
+    <span editable-select="wine.tannin" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.tannin) }}</strong>
+    </span>
+  </td>
+  <td>Alcohol</td>
+  <td>
+    <span editable-select="wine.alcohol" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.alcohol) }}</strong>
+    </span>
+  </td>
+</tr>
+
+
+<tr>
+  <td>body</td>
+  <td>
+    <span editable-select="wine.body" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.body) }}</strong>
+    </span>
+  </td>
+  <td>Flavour Intenisty </td>
+  <td>
+    <span editable-select="wine.flavour_intenisty" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.flavour_intenisty) }}</strong>
+    </span>
+  </td>
+</tr>
+
+
+<tr>
+  <td>Flavour Characteristice</td>
+  <td>
+    <span editable-select="wine.flavour_characteristice" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.flavour_characteristice) }}</strong>
+    </span>
+  </td>
+  <td>Finish</td>
+  <td>
+    <span editable-select="wine.finish" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.finish) }}</strong>
+    </span>
+  </td>
+</tr>
+
+<tr>
+  <td>Faults </td>
+  <td>
+    <span editable-select="wine.faults" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.faults) }}</strong>
+    </span>
+  </td>
+  <td></td>
+  <td><strong></strong></td>
+</tr>
+
+<tr>
+  <th colspan="4"> <img src="/modules/wine/client/images/tr_17.png" /> Conclusion</th>
+</tr>
+
+<tr>
+  <td>Quality</td>
+  <td>
+   <span editable-select="wine.quality" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+    <strong>{{ showStatus(wine.quality) }}</strong>
+  </span>
+</td>
+<td>Ageability </td>
+<td>
+  <span editable-select="wine.ageability" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+    <strong>{{ showStatus(wine.ageability) }}</strong>
+  </span>
+</td>
+</tr>
+
+<tr>
+  <th colspan="4"> <img src="/modules/wine/client/images/tr_18.png" /> Nose</th>
+</tr>
+
+<tr>
+  <td colspan="4">
+    <span editable-text="wine.desc" e-form="tableform" e-ng-options="s.value as s.text for s in statuses">
+      <strong>{{ showStatus(wine.desc) }}</strong>
+    </span>
+  </td>
+</tr>
+</tbody>
+</table>
+</form>
+</div>

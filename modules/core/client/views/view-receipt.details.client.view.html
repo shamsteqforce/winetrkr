@@ -1,0 +1,65 @@
+ 
+ 
+ <form  method="post" name="receiptForm" ng-submit="create(receiptForm.$valid)">
+  <div class="accountsetting_tabs detalis">
+
+     <div class="col-md-6" id="recpimg">   
+
+       <img ng-src="{{receipt.file_path}}" ></img>
+       <br>
+       <a href="" ng-click="zoomIn()"  data-toggle="tooltip" title="Click to Zoom In"> <i class="fa fa-search-plus" ng-show="visibleIn"   ></i></a>
+       <a href="" style="color:red;"  ng-click="zoomOut()" data-toggle="tooltip" title="Click to Zoom Out"> <i class="fa fa-search-minus" ng-show="visibleOut" ></i></a>
+
+    
+
+
+    </div>
+
+    <div class="col-md-6 " style="border-left: 1px solid #f2f3f4;">
+      <div class="modal-body-box clearfix">
+        <div class="col-md-12">
+
+          <label ng-class="{visibility: !receipt.name.length}">Receipt Name</label>
+              <input type="text" name="receipt_name" ng-model='receipt.name' placeholder="RECEIPT NAME" required>
+
+          <!-- <label >Receipt Name</label>
+          <input type="text" ng-model="receipt.receipt_name" > -->
+        </div>
+      </div>
+      <div class="modal-body-box clearfix">
+        <div class="col-md-12">
+        <div  style="float:left;">
+          <label >Receipt Date</label>
+           <input type="text" uib-datepicker-popup="dd/MM/yyyy" ng-model="receipt.updated_at" is-open="popup2.opened" datepicker-options="dateOptions"  ng-required="true" close-text="Close" ng-click="open2()"/ >
+         <!--  <input type="date" value="Receipt Date Here"> -->
+                </div>
+        <span class=" calendar col-md-3" style="float:right;"><img ng-click="open2()" src="modules/core/client/images/calender_two.jpg">
+        </span> 
+        </div>
+      </div>
+      <div class="modal-body-box clearfix">
+        <div class="col-md-12 ">
+          <!-- <label >TAG (COMMA SEPARATED)</label>
+          <input type="text" value="Receipt Tag Here" ng-model="receipt.receipt_tags" > -->
+          <label ng-class="{visibility: !receipt.tags.length}">TAG (COMMA SEPARATED)</label>
+              <input type="text" name="receipt_tags" ng-model='receipt.tags' placeholder="TAG (COMMA SEPARATED)" >
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer login save clearfix" >
+  <div class="col-md-12">
+  <div class="col-md-6 col-sm-6 col-xs-12 footer border-right border-top">
+    <a href="#" class="btn btn-lg save" ng-click="deleteReceipt(receipt)">Delete Receipt</a>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 footer">
+   <button type="submit" class="show-signup btn-lg"  ng-disabled="isDisabled">Save Changes</button>
+ </div>
+ </div>
+</div>
+</form>
+
+
+
+

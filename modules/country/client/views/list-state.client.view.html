@@ -1,0 +1,29 @@
+<section class="main-view" ng-controller="CountryController" ng-init="findOne()">
+  <div class="container">
+    <div class="page-header">
+      <h1>State for {{country.title}}
+        <small class="pull-right">
+          <a ui-sref="country.list"><i class="fa fa-arrow-circle-left"></i></a>
+          <a ui-sref="country.state-create({countryId: country._id})"><i class="fa fa-plus-circle"></i></a>
+          
+        </small>
+      </h1>
+    </div>
+
+    <table class="table">
+      <thead>
+        <th>Name</th>
+        <th width="130">Action</th>
+      </thead>
+      <tbody>
+        <tr ng-repeat="state in country.state">
+          <td ng-bind="state.title"></td>
+          <td>
+          <a ui-sref="country.state-edit({countryId: country._id, stateId: state._id})">Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</section>

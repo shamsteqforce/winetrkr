@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <meta name="description" content="Track inventory. Analyze your collection. Rediscover wines.">
+  <meta name="keywords" content="wine cellar app, wine tracker, wine app, cellar tracker app, wine software">
+  <meta name="author" content="">
+
+  <base href="/">
+  <title>Winetrakr is the wine cellar app for distinguished collectors.</title>
+
+
+
+  <!-- Fav Icon -->
+  <link href="modules/core/client/img/favicon.ico" rel="shortcut icon" type="image/x-icon">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+<!--   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway:100,300,500,600,200,700"> -->
+
+  <!-- Application CSS Files -->
+  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">{% endfor %}
+</head>
+
+<body class="ng-cloak">
+  <toaster-container></toaster-container>
+  {% block content %}{% endblock %}
+  <!--Embedding The User Object-->
+  <script type="text/javascript">
+    var user = {{ user | json | safe }};
+  </script>
+
+  <!--Load The Socket.io File-->
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript" src="/vendor/stripe-angular/stripe-angular.js"></script>
+  
+  
+  <!--Application JavaScript Files-->
+  {% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
+  {% if livereload %}
+  <!--Livereload script rendered -->
+  <script type="text/javascript" src="{{host}}:35729/livereload.js"></script>
+  {% endif %}
+
+  <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script> -->
+  <!-- <script type="text/javascript" src="/vendor/stripe-angular/stripe-angular.js"></script> -->
+
+  <script src="/modules/core/client/highcharts/highcharts.js" type="text/javascript"></script>
+
+  <script type="text/javascript" src="/modules/core/client/dropzone/dropzone.js"></script>
+  <link rel="stylesheet" href="/modules/core/client/css/dropzone.css">
+   <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-svg-round-progressbar/0.4.4/roundProgress.min.js"></script>
+
+   <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+  
+</body>
+
+</html>

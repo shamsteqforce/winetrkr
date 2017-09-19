@@ -1,0 +1,138 @@
+<section ng-init="findCountry()">
+  <div class="modal-header user-header">
+    <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+    <h2 class="modal-title" id="AccountSetting_tabs"> Add Bottle</h2>
+  </div>
+
+  <div class="modal-body user_setting add-new-wine">
+
+  <form  method="post" name="wineBottleForm" ng-submit="postTransaction(wineBottleForm.$valid)">
+
+      <div class="add-bottle">
+        <div class="modal-body-box clearfix">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="qty">
+              <label ng-class="{visibility: !quantity.length}">QUANTITY</label>
+              <input type="text" name="quantity" ng-model='quantity' placeholder="QUANTITY" numbers-only="numbers-only" required>
+            </div>
+          <div class="cost">
+              <label  ng-class="{visibility: !cost_per_bottle.length}">COST (PER BOTTLE)</label>
+              <input type="number" name="cost_per_bottle" ng-model='cost_per_bottle' placeholder="COST (PER BOTTLE)" step="0.01" value="0.00" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" required decimal-places>
+            </div>
+          </div>
+
+
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label >CURRENCY</label>
+            <select name="currency" ng-model='currency_code' ng-init="currency_code = user.currency_code" required>
+              <option value="">CURRENCY</option>
+              <option value="{{countrycod}}" ng-repeat="countrycod in countries" ng-selected="countrycod==user.currency_code">{{countrycod}}</option>
+            </select>
+          </div>
+
+
+        </div><!--modal-body-box-->
+
+        <div class="modal-body-box clearfix">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !fill_level.length}">FILL LEVEL</label>
+            <select name="level" ng-model='fill_level' ng-init="fill_level = fillLevelData[0]" required>
+              <option value="">FILL LEVEL</option>
+              <option value="{{fill}}" ng-repeat="fill in fillLevelData">{{fill | capitalize:true}}</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !level_condition.length}">LEVELS CONDITION</label>
+            <select ng-model='level_condition' ng-init="level_condition = labelConditionDate[0]" required>
+              <option value="">LEVELS CONDITION</option>
+              <option value="{{level}}" ng-repeat="level in labelConditionDate">{{level | capitalize:true}}</option>
+            </select>
+          </div>
+        </div><!--modal-body-box-->
+
+        <div class="modal-body-box clearfix">
+          <!-- <span class="console ng-binding">{{source_supplier}} = ===</span> -->
+          <!-- <span class="console ng-binding">{{sourceSupplierSelected.title}} = ===</span> -->
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !cork_condition.length}">CORK CONDITION</label>
+            <select name="cork_condition" ng-model='cork_condition' ng-init="cork_condition = corkConditionData[0]" required>
+              <option value="">CORK CONDITION</option>
+              <option value="{{cork}}" ng-repeat="cork in corkConditionData">{{cork | capitalize:true}}</option>
+            </select>
+          </div>
+
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !source_supplier}">SOURCE (SUPPLIER)</label>
+            <div angucomplete-alt
+            placeholder="SOURCE (SUPPLIER)"
+            pause="100"
+            selected-object="sourceSupplierSelected"
+            initial-value="sourceSupplierSelected"
+            local-data="sourceSupplier"
+            search-fields="title"
+            title-field="title"
+            minlength="1"
+            input-class=""
+            match-class=""
+            input-changed="sourceSupplierChanged">
+          </div>
+        </div>
+      </div><!--modal-body-box-->
+
+      <div class="modal-body-box clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <label ng-class="{visibility: !delivery_status.length}">DELIVERY STATUS</label>
+          <select name="delivery_status" ng-model='delivery_status' ng-init="delivery_status = deliveryStatus[0]" required>
+            <option value="">DELIVERY STATUS</option>
+            <option value="{{doc}}" ng-repeat="doc in deliveryStatus">{{doc | capitalize:true}}</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-9">
+            <label ng-class="{visibility: !cellar_id.length}">CELLER (LOCATION)</label>
+            <select name="cellar_id" ng-model='cellar_id'  ><!--ng-init="cellar_id = cellars[0]._id"-->
+              <option value="">CELLAR (LOCATION)</option>
+              <option value="{{doc._id}}" ng-repeat="doc in cellars">{{doc.cellar_name}}</option>
+            </select>
+          </div>
+          <div class="col-lg-3">
+            <a href="#" class="trash" ng-click="addCellar();"><i class="fa fa-plus"></i></a>
+          </div>
+        </div>
+        
+
+      </div><!--modal-body-box-->
+
+
+      <div class="modal-body-box clearfix">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label>Purchase Date</label>
+            <input type="text" uib-datepicker-popup="dd-MM-yyyy" ng-model="purchase_date" is-open="popup2.opened" datepicker-options="dateOptions"  ng-required="true" close-text="Close" ng-click="open2()"/ >
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+          </div>
+        </div><!--modal-body-box-->
+
+
+    </div>
+    <div class="modal-footer login save">
+      <div class="col-md-6 col-sm-6 col-xs-12 footer border-right">
+        <a href="#" class="btn btn-lg save" ng-click="close()">Cancel</a>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12 footer">
+        <button type="submit" class="show-signup btn-lg">Save</button>
+      </div>
+    </div>
+  </form>
+
+
+
+</div>
+</section>
+
+
+
+
+

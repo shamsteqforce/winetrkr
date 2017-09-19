@@ -1,0 +1,49 @@
+<section class='login_section' ng-controller="HomeController">
+ <div class="container">
+   <div class="row">
+     <div class="col-md-12 col-sm-12 col-xs-12">
+       <h2 class="text-center"><img src="modules/core/client/images/logo_lg.png" /></h2>
+       <h4 class="text-center">The wine cellar app for distinguished collectors</h4>
+
+       <div class="reques_ivite">
+         <a class="invite" href="#" ng-click="showInvite()"> REQUEST INVITE</a>
+         <a href="#" class="green login" ng-click="showLogin();" >Sign In</a>
+       </div>
+       <!-- <ul class="reques_ivite">
+         <li><a class="invite" href="#"> REQUEST INVITE</a></li>
+         <li class="green"><a ui-sref="authentication.signin">Sign In</a></li>
+         <li><a href="#" class="green login" ng-click="showLogin();" >Sign In</a></li>
+       </ul> -->
+     </div>
+   </div>
+
+<!--    <div id="footer">
+     <div class="row">
+       <div class="col-xs-6">
+         <img src="modules/core/client/img//net_ht.png" height="40" alt="" />
+       </div>
+       <ul class="list-inline col-xs-6 text-right">
+         <li><a href="#">CONTACT</a></li>
+         <li><a href="#">FACEBOOK</a></li>
+         <li><a href="#">TWITTER</a></li>
+       </ul>
+     </div>
+   </div> -->
+ </div>
+</section>
+
+<script type="text/ng-template" id="userSignIn.html">
+  <div ng-include src="'/modules/users/client/views/authentication/signin.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="userInvite.html">
+  <div ng-include src="'/modules/users/client/views/authentication/invite.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="userSignUp.html">
+  <div ng-include src="'/modules/users/client/views/authentication/signup.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="forgetPassword.html">
+  <div ng-include src="'/modules/users/client/views/password/forgot-password.client.view.html'"></div>
+</script>

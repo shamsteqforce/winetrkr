@@ -1,0 +1,194 @@
+<div class="body" ng-controller="CellarController" ng-init="findWines()">
+  <header ng-include="'/modules/core/client/views/header-receipts.client.view.html'"></header>
+
+
+
+  <div class="receipts">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-5 col-sm-5 col-xs-12">
+          <ul class="asing_count">
+            <li class="active" id="allRcv"><a href="" ng-click="allVisible()">All ({{receipts.length}})</a></li>
+            <li id="allassRcv" ><a href=""  ng-click="assignVisible()">Assigned ({{assignReceipts.length}})</a></li>
+            <li id="allunRcv" ><a href="" ng-click="unassignVisible()">Unassigned ({{unassignReceipts.length}})</a></li>
+          </ul>
+        </div>
+
+
+        <div class="col-md-3 col-sm-3 col-xs-12 active-list">
+          <a ui-sref="receipt"><i class="fa fa-th-large fa-2x"></i></a>
+          <a class="active"><i class="fa fa-bars fa-2x"></i></a>
+        </div>
+
+
+        <div class="col-md-4 col-sm-5 col-xs-12">
+         <ul class="search_de_icon">
+          <li><span class="trash"><a href=""><i class="fa fa-trash"></i></a></span></li>
+          <li><span class="add-new"><a href="#"  ng-click="addReceipt();"><i class="fa fa-plus"></i></a></span></li>
+         <li>
+              <form class="search" action="" method="get">
+                <span class="search_box">
+                  <input name="s" id="s" type="text" value="" placeholder="Search"/>
+                </span>
+                <span class="sub_mit_text">
+                  <a href=""><i class="fa fa-search"></i></a>
+                </span>
+              </form>
+            </li>
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+</div><!---->
+
+
+<div class="receipts_post clearfix" ng-show="allReceipt">
+  <div class="container">
+    <div class="row">
+
+      <div class="blog_post_row clearfix ">
+       <div class="col-md-12 col-sm-4 col-xs-12 margin_from_bottom"   ng-repeat="receipt in receipts">
+        <div class="blog_page">
+          <div class="row" style="padding: 20px">
+            <div class="col-md-1">
+              <center>
+                <input type="checkbox" style="margin-top: 25px">
+              </center>
+            </div>
+            <div class="col-md-1">
+              <img ng-src="{{receipt.file_path}}"  style="height: 60px; width: 60px" />
+            </div>
+
+            <div class="col-md-7">
+              <p>{{receipt.name}}</p>
+              <h5>{{receipt.updated_at | date:"dd MMM,yyyy"}}</h5>
+            </div>
+            <div class="col-md-3">
+              <ul class="search_de_icon">
+                <li>
+                  <span class="trash"><a href="" ng-click="deleteReceipt(receipt)" class="del"><i class="fa fa-trash"></i></a></span>
+                </li>
+                <li>
+                  <a  href="" ng-click="viewReceipt(receipt);" class="view_details">VIEW RECEIPT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </div>  
+
+     
+    </div>
+    
+    
+  </div>
+</div><!---->
+</div><!--receipts_post-->
+
+
+
+<div class="receipts_post clearfix" ng-show="unassignRecept">
+  <div class="container">
+    <div class="row">
+
+      <div class="blog_post_row clearfix ">
+       <div class="col-md-12 col-sm-4 col-xs-12 margin_from_bottom"   ng-repeat="receipt in unassignReceipts">
+        <div class="blog_page">
+          <div class="row" style="padding: 20px">
+            <div class="col-md-1">
+              <center>
+                <input type="checkbox" style="margin-top: 25px">
+              </center>
+            </div>
+            <div class="col-md-1">
+              <img ng-src="{{receipt.file_path}}"  style="height: 60px; width: 60px" />
+            </div>
+
+            <div class="col-md-7">
+              <p>{{receipt.name}}</p>
+              <h5>{{receipt.updated_at | date:"dd MMM,yyyy"}}</h5>
+            </div>
+            <div class="col-md-3">
+              <ul class="search_de_icon">
+                <li>
+                  <span class="trash"><a href="" ng-click="deleteReceipt(receipt)" class="del"><i class="fa fa-trash"></i></a></span>
+                </li>
+                <li>
+                  <a  href="" ng-click="viewReceipt(receipt);" class="view_details">VIEW RECEIPT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </div>  
+
+     
+    </div>
+    
+    
+  </div>
+</div><!---->
+</div><!--receipts_post-->
+
+
+<div class="receipts_post clearfix" ng-show="assignRecept">
+  <div class="container">
+    <div class="row">
+
+      <div class="blog_post_row clearfix ">
+       <div class="col-md-12 col-sm-4 col-xs-12 margin_from_bottom"   ng-repeat="receipt in assignReceipts">
+        <div class="blog_page">
+          <div class="row" style="padding: 20px">
+            <div class="col-md-1">
+              <center>
+                <input type="checkbox" style="margin-top: 25px">
+              </center>
+            </div>
+            <div class="col-md-1">
+              <img ng-src="{{receipt.file_path}}"  style="height: 60px; width: 60px" />
+            </div>
+
+            <div class="col-md-7">
+              <p>{{receipt.name}}</p>
+              <h5>{{receipt.updated_at | date:"dd MMM,yyyy"}}</h5>
+            </div>
+            <div class="col-md-3">
+              <ul class="search_de_icon">
+                <li>
+                  <span class="trash"><a href="" ng-click="deleteReceipt(receipt)" class="del"><i class="fa fa-trash"></i></a></span>
+                </li>
+                <li>
+                  <a  href="" ng-click="viewReceipt(receipt);" class="view_details">VIEW RECEIPT</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div> 
+      </div>  
+
+     
+    </div>
+    
+    
+  </div>
+</div><!---->
+</div><!--receipts_post-->
+
+
+
+
+
+</div>
+
+
+
+<script type="text/ng-template" id="addReceipt.html">
+  <div ng-include src="'/modules/core/client/views/add-receipt.client.view.html'"></div>
+</script>
+<script type="text/ng-template" id="editReceipt.html">
+  <div ng-include src="'/modules/core/client/views/edit-receipt.client.view.html'"></div>
+</script>
+

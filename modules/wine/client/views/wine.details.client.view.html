@@ -1,0 +1,154 @@
+ <form  method="post" name="wineForm" ng-submit="create(wineForm.$valid)" ng-init="findCountry()">
+  <div class="accountsetting_tabs detalis">
+    <!-- {{producerSelected}} -->
+    <div class="modal-body-box clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !producer.length}">PRODUCER</label>
+        <div angucomplete-alt
+        placeholder="PRODUCER"
+        pause="100"
+        selected-object="producerSelected"
+       
+        local-data="producerList"
+        search-fields="producer"
+        title-field="producer"
+        minlength="1"
+        input-class=""
+        match-class=""
+        input-changed="producerChanged"
+        
+        >
+      </div>
+
+      <!-- <input type="text" name="producer" ng-model='producer' ng-change="checkUniqueWine()" placeholder="PRODUCER" required> -->
+     <!--    <div ng-messages="wineForm.producer.$error" role="alert">
+          <p class="help-block error-text" ng-message="required">PRODUCER is required.</p>
+        </div> -->
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label ng-class="{visibility: !wine_name.length}" >WINE NAME</label>
+        <div angucomplete-alt
+        placeholder="WINE NAME"
+        pause="100"
+        selected-object="wineNameSelected"
+        initial-value="wineNameSelected"
+        local-data="wineNameList"
+        search-fields="wine_name"
+        title-field="wine_name"
+        minlength="1"
+        input-class=""
+        match-class=""
+        input-changed="wineChanged">
+      </div>
+      <!-- <input type="text" name="wine_name" ng-model='wine_name' ng-change="checkUniqueWine()" placeholder="WINE NAME" required> -->
+    </div>
+  </div><!--modal-body-box-->
+
+  <div class="modal-body-box clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !vintage_year.length}">VINTAGE YEAR</label>
+      <select ng-model='vintage_year' ng-change="checkUniqueWine()" required>
+        <option value="">VINTAGE YEAR</option>
+        <option value="{{year}}" ng-repeat="year in vintageYears()">{{year}}</option>
+      </select>
+    </div>
+
+<!--
+Commented by Shams 
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !bottle_size.length}">BOTTLE SIZE</label>
+      <select name="bottle_size" ng-model='bottle_size' ng-change="checkUniqueWine()" required>
+        <option value="">BOTTLE SIZE</option>
+        <option value="{{bottle}}" ng-repeat="bottle in bottleSize">{{bottle | capitalize:true}}</option>
+      </select>
+    </div>
+  </div><!--modal-body-box-->
+
+   <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !bottle_size.length}">BOTTLE SIZE</label>
+      <select name="bottle_size" ng-model='bottle_size' required>
+        <option value="">BOTTLE SIZE</option>
+        <option value="{{bottle}}" ng-repeat="bottle in bottleSize">{{bottle | capitalize:true}}</option>
+      </select>
+    </div>
+  </div><!--modal-body-box-->
+
+
+
+
+
+  <div class="modal-body-box clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !country.length}">COUNTRY</label>
+      <select id="country" name="country" ng-model='country' ng-change="countryChange()" required>
+        <option value="">COUNTRY</option>
+        <option ng-repeat="doc in countries" value="{{doc.title}}">{{doc.title | capitalize:true}}</option>
+      </select>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !uniqueWine.state.length}">STATE / REGION</label>
+      <select ng-model="uniqueWine.state" required>
+        <option value="">STATE / REGION</option>
+        <option value="Other">Other</option>
+        <option ng-repeat="doc in countryState" value="{{doc.title}}">{{doc.title}}</option>
+      </select>
+    </div>
+  </div><!--modal-body-box-->
+
+  <div class="modal-body-box clearfix">
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !uniqueWine.region.length}">REGION</label>
+      <input type="text" name="region" ng-model='uniqueWine.region' placeholder="REGION">
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <label ng-class="{visibility: !uniqueWine.sub_region.length}">SUB REGION</label>
+      <input type="text" name="sub_region" ng-model='uniqueWine.sub_region' placeholder="SUB REGION">
+    </div>
+  </div><!--modal-body-box-->
+
+
+
+  <div class="modal-body-box clearfix">
+   <div class="col-md-6 col-sm-6 col-xs-12">
+     <label ng-class="{visibility: !uniqueWine.classification.length}">CLASSIFICATION</label>
+     <select id="classification" name="classification" ng-model="uniqueWine.classification" required>
+      <option value="">CLASSIFICATION</option>
+      <option ng-repeat="doc in classificationData" value="{{doc}}">{{doc | capitalize:true}}</option>
+    </select>
+  </div>
+
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <label ng-class="{visibility: !uniqueWine.wine_varietal.length}">VARIETAL</label>
+    <select id="wine_varietal" name="wine_varietal" ng-model="uniqueWine.wine_varietal" required>
+      <option value="">VARIETAL</option>
+      <option ng-repeat="doc in wineVarietal" value="{{doc}}">{{doc | capitalize:true}}</option>
+    </select>
+  </div>
+</div>
+
+<!--
+<div class="modal-body-box clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <label ng-class="{visibility: !uniqueWine.drinking_window.length}">Drinking Window</label>
+    <select name="drinking_window" ng-model='uniqueWine.drinking_window' required>
+      <option value="">DRINKING WINDOW</option>
+      <option value="{{doc}}" ng-repeat="doc in drinkingWindow">{{doc}}</option>
+    </select>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+
+  </div>
+</div><!--modal-body-box-->
+</div>
+
+<div class="modal-footer login save">
+  <div class="col-md-6 col-sm-6 col-xs-12 footer border-right">
+    <a href="#" class="btn btn-lg save" ng-click="close()">Cancel</a>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 footer">
+   <button type="submit" class="show-signup btn-lg" ng-disabled="isDisabled">Next</button>
+ </div>
+</div>
+</form>

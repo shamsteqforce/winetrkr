@@ -1,0 +1,112 @@
+
+<div class="delivered_location clierfix">
+  <table class="table">
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_1.png" />Status</td>
+      <td>
+        <select class="form-control" name="delivery_status" ng-model='delivery_status'>
+          <option value="">DELIVERY STATUS</option>
+          <option value="{{wine.doc}}" ng-repeat="doc in deliveryStatus">{{doc}}</option>
+        </select>
+      </td>
+      <td><img src="/modules/wine/client/images/tr_2.png" />Location </td>
+      <td>
+        <select class="form-control" name="cellar_location" ng-model='wine.cellar_location'>
+          <option value="">CELLAR (LOCATION)</option>
+          <option value="{{doc.cellar_name}}" ng-repeat="doc in cellars">{{doc.cellar_name}}</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_3.png" />Date</td>
+      <td><input class="form-control" type="text" value="{{wine.created_at | date:'mediumDate'}}" /></td>
+      <td><img src="/modules/wine/client/images/tr_4.png" />Bottle Price </td>
+      <td><input class="form-control" type="text" value="{{wine.cost_per_bottle}}" /></td>
+    </tr>
+
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_5.png" />Bottle Size</td>
+      <td>
+        <select class="form-control" name="bottle_size" ng-model='wine.bottle_size' ng-change="checkUniqueWine()">
+          <option value="">BOTTLE SIZE</option>
+          <option value="{{bottle}}" ng-repeat="bottle in bottleSize">{{bottle}}</option>
+        </select>
+      </td>
+      <td><img src="/modules/wine/client/images/tr_6.png" />Quantity </td>
+      <td><input class="form-control" type="text" value="{{wine.quantity}} Bottle" /></td>
+    </tr>
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_7.png" />Vintage </td>
+      <td>
+        <select class="form-control" ng-model='wine.vintage_year' ng-change="checkUniqueWine()" >
+          <option value="">VINTAGE YEAR</option>
+          <option value="{{year}}" ng-repeat="year in vintageYears()">{{year}}</option>
+        </select>
+      </td>
+      <td><img src="/modules/wine/client/images/tr_8.png" />Cork Condition </td>
+      <td>
+        <select class="form-control" name="cork_condition" ng-model='wine.cork_condition'>
+          <option value="">CORK CONDITION</option>
+          <option value="{{cork}}" ng-repeat="cork in corkConditionData">{{cork}}</option>
+        </select>
+      </td>
+    </tr>
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_9.png" />Classification</td>
+      <td>
+        <select class="form-control" id="classification" name="classification" ng-model="uniqueWine.classification">
+          <option value="">CLASSIFICATION</option>
+          <option ng-repeat="doc in classificationData" value="{{doc}}">{{doc}}</option>
+        </select>
+      </td>
+      <td><img src="/modules/wine/client/images/tr_10.png" />Owc</td>
+      <td><strong><input class="form-control" type="text" value="" /></strong></td>
+    </tr>
+
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_11.png" />Fillevels</td>
+      <td>
+        <select class="form-control" name="level" ng-model='wineData.fill_level' ng-init="wineData.fill_level = fillLevelData[0]">
+          <option value="">FILL LEVEL</option>
+          <option value="{{fill}}" ng-repeat="fill in fillLevelData">{{fill}}</option>
+        </select>
+      </td>
+      <td><img src="/modules/wine/client/images/tr_12.png" />Label Condition</td>
+      <td>
+        <select class="form-control" ng-model='wine.level_condition'>
+          <option value="">LEVELS CONDITION</option>
+          <option value="{{level}}" ng-repeat="level in labelConditionDate">{{level}}</option>
+        </select>
+      </td>
+    </tr>
+
+
+    <tr>
+      <td><img src="/modules/wine/client/images/tr_13.png" />Varietal</td>
+      <td>
+        <select class="form-control" id="wine_varietal" name="wine_varietal" ng-model="uniqueWine.wine_varietal">
+          <option value="">VARIETAL</option>
+          <option ng-repeat="doc in wineVarietal" value="{{doc}}">{{doc}}</option>
+        </select>
+      </td>
+        <!-- <td><img src="/modules/wine/client/images/tr_13.png" />Grape Variety 1</td>
+        <td><strong>Merlot - 50%</strong></td> -->
+      </tr>
+    </table>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="row">
+
+          <div class="col-lg-6 value-details" ng-repeat="grape in wine.grape_varietal">
+            <div class="col-lg-8" style="padding: 20px"><img src="/modules/wine/client/images/tr_13.png" height="25" />{{grape.name}}</div>
+            <div class="col-lg-4" style="padding: 20px"><strong>{{grape.value}}%</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!--delivered_location-->

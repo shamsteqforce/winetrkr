@@ -1,0 +1,83 @@
+<div ng-controller="HeaderController">
+  <div id="header_wrap" class="header_wrap clearHead">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-1 col-sm-1 col-xs-12">
+          <div class="">
+            <a href="/cellar"><img src="modules/core/client/img/logo.png" alt="logo"  height="85" /></a>
+          </div>
+        </div><!-- .logos -->
+
+        <div class="col-md-4 col-sm-4 col-xs-12 menu_wrap">
+          <!-- Static navbar -->
+          <div class="row bs-example setdemo">
+            <div class="dropdown" ng-show="authentication.user">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"><span class="menu_icon_img_fon"><i class="fa fa-globe"></i></span> Cellars
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" style="margin-top:-5px;">
+               <li>
+                 <a ui-sref="inventory"><span class="dropdown_cellrs"></span>Inventory</a>
+               </li>
+               <li><a ui-sref="receipt"><span class="menu_icon_img_fon"><i class="fa fa-file-text-o"></i></span> Receipts</a></li>
+             </ul>
+           </div>
+         </div>
+       </div><!-- .menu_wrap -->
+
+
+       <div class="col-md-7 col-sm-7 col-xs-12 hd_others">
+        <ul class="nav navbar-nav navbar-right"  id='login' ng-show="authentication.user">
+          <li class="dropdown welcom_box" dropdown>
+            <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+              <img ng-src="{{authentication.user.profileImageURL}}" alt="IMG" class="header-profile-image" />
+              Hi, <span ng-bind="authentication.user.firstName"></span> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu user_dropdown" id='dropdown-menu'>
+              <li><a href="#" ng-click="userSubscription();">Subscription </a><i class="fa fa-credit-card"></i></li>
+              <li ui-sref-active="active"><a href="#" ng-click="userSetting();">Account Settings </a><i class="fa fa-cog"></i></li>
+              <li><a href="/api/auth/signout" target="_self">Signout</a><i class="fa fa-power-off"></i> </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
+          <li ui-sref-active="active">
+            <a ui-sref="authentication.signup">Sign Up</a>
+          </li>
+          <li class="divider-vertical"></li>
+          <li ui-sref-active="active">
+            <a ui-sref="authentication.signin">Sign In</a>
+          </li>
+        </ul>
+
+       <ul class="charts" ng-show="authentication.user">
+          <li class="quantities">Quantity <span> {{stockQty.qty}}</span></li>
+          <li class="expends">Expenditure <span>{{authentication.user.currency_code}} {{expenditure.total_price|number:2}}</span></li>
+          <li class="mvalue">Market value <span> {{authentication.user.currency_code}} {{marketValue1|number:2}}</span></li>
+        </ul>
+      </div>
+    </div><!-- .row -->
+  </div><!-- .container -->
+</div><!-- .header_wrap -->
+
+
+<div id="slide_wrap_section" class="slide_wrap_section clearfix">
+  <div class="container-fluid">
+    <div class="row">
+      <img src="modules/core/client/img/cellars.jpg" alt="" />
+    </div><!-- .row -->
+  </div><!-- .container -->
+</div><!-- .slide_wrap_section -->
+</div>
+
+
+
+
+<script type="text/ng-template" id="userSetting.html">
+  <div ng-include src="'/modules/users/client/views/settings/settings.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="userSubscription.html">
+  <div ng-include src="'/modules/users/client/views/subscription/subscription.client.view.html'"></div>
+</script>
+

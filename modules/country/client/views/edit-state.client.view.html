@@ -1,0 +1,28 @@
+<section class="main-view" ng-controller="CountryController" ng-init="findOneCountryState()">
+  <div class="container">
+    <div class="page-header">
+      <h1>Edit State
+      <small class="pull-right">
+      <a ui-sref="country.state({countryId: country._id})"><i class="fa fa-arrow-circle-left"></i></a>
+      </small>
+      </h1>
+    </div>
+    <div class="col-md-12">
+      <form name="countryForm" class="form-horizontal" ng-submit="updateState(countryForm.$valid)" novalidate>
+        <fieldset>
+          <div class="form-group" show-errors>
+            <label for="title">Title</label>
+            <input name="title" type="text" ng-model="state.title" id="title" class="form-control" placeholder="Title" required>
+          </div>
+ 
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</section>

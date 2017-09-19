@@ -1,0 +1,52 @@
+<section class="main-view" ng-controller="CountryController" ng-init="findOne()">
+  <div class="container">
+    <div class="page-header">
+      <h1>Edit country
+       <small class="pull-right">
+        <a ui-sref="country.view({countryId: country._id})"><i class="fa fa-arrow-circle-left"></i></a>
+      </small>
+    </h1>
+  </div>
+  <div class="col-md-12">
+    <form name="countryForm" class="form-horizontal" ng-submit="update(countryForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label for="title">Title</label>
+          <input name="title" type="text" ng-model="country.title" id="title" class="form-control" placeholder="Title" required>
+          <div ng-messages="countryForm.title.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">country title is required.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label for="country_code">Country Code</label>
+          <input name="country_code" type="text" ng-model="country.country_code" id="country_code" class="form-control" placeholder="Country Code" >
+        </div>
+        <div class="form-group" show-errors>
+          <label for="currency">Currency</label>
+          <input name="currency" type="text" ng-model="country.currency" id="currency" class="form-control" placeholder="Currency" >
+        </div>
+        <div class="form-group" show-errors>
+          <label for="currency_code">Currency Code</label>
+          <input name="currency_code" type="text" ng-model="country.currency_code" id="currency_code" class="form-control" placeholder="Currency Code" >
+        </div>
+        <div class="form-group" show-errors>
+          <label for="euro_conv_rate">EURO Conv Rate</label>
+          <input name="euro_conv_rate" type="number" ng-model="country.euro_conv_rate" id="euro_conv_rate" class="form-control" placeholder="EURO Conv Rate" >
+        </div>
+
+        <div class="form-group" show-errors>
+          <label for="_sort">Sort</label>
+          <input type="number" name="_sort" type="number" ng-model="country._sort" id="_sort" class="form-control" placeholder="Sort" >
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+        <div ng-show="error" class="text-danger">
+          <strong ng-bind="error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
+</section>

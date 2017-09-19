@@ -1,0 +1,69 @@
+<section>
+  <div class="modal-header user-header">
+    <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+    <h2 class="modal-title" id="AccountSetting_tabs"> Remove Bottle</h2>
+  </div>
+
+  <div class="modal-body user_setting add-new-wine">
+    <form  method="post" name="wineForm" ng-submit="postDrTransaction(wineForm.$valid)">
+
+      <div class="add-bottle-body"> 
+
+        <div class="modal-body-box clearfix">
+           <div class="col-md-6 col-sm-6 col-xs-12">
+           <label ng-class="{visibility: !reason.region.length}">reason</label>
+            <select ng-change="setPriceToRemove(wineRemove.reason)" ng-model="wineRemove.reason" name="reason" required>
+              <option value="">REASON</option>
+              <option value="sold">SOLD</option>
+              <option value="consumed">CONSUMED</option>
+              <option value="discarded">DISCARDED</option>
+              <option value="gifted">GIFTED</option>
+            </select>
+            <!-- <input type="text" name="region" ng-model='reason.region' placeholder="REASON"> -->
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !qty.region.length}">No of bottles</label>
+            <input type="text" name="region" ng-model='wineRemove.quantity' numbers-only="numbers-only" placeholder="NO OF BOTTLE">
+          </div>
+
+        </div>
+
+
+        <div class="modal-body-box clearfix">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label>Currency</label>
+            <select ng-disabled="wineRemove.reason != 'sold'" name="currency" ng-model='wineRemove.currency_code' required ng-options="c.currency_code as c.currency_code for c in countries">
+            <option value="">CURRENCY</option>
+            </select>
+          </div>
+          <div class="col-md-6 col-sm-6 col-xs-12">
+            <label ng-class="{visibility: !producer.length}">Price</label>
+            <input type="text" name="producer" ng-disabled="wineRemove.reason != 'sold'" ng-model='wineRemove.price' ng-change="checkUniqueWine()" placeholder="PRICE" class="price-disabled">
+          </div>
+         
+        </div>
+
+      </div>
+
+      <div class="modal-footer login save">
+        <div class="col-md-6 col-sm-6 col-xs-12 footer border-right">
+          <a href="#" class="btn btn-lg save" ng-click="close()">CANCEL</a>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 footer">
+          <button type="submit" class="show-signup btn-lg" ng-confirm-click="Would you like to remove? " ng-disabled="isDisabled">
+
+          Remove</button>
+
+
+  
+        </div>
+      </div>
+    </form>
+
+  </div>
+</section>
+
+
+
+
+

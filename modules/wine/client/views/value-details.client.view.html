@@ -1,0 +1,85 @@
+  <div class="price_section">
+    <img src="/modules/wine/client/images/price.png" />
+  </div><!--price_section-->
+
+  <div class="seore_scetion">
+    <ul class="list-inline">
+      <li>Your score <br /><strong>{{wine.score}}</strong>
+        <!-- <input type="range"> -->
+        <rzslider rz-slider-model="wine.score" rz-slider-options="slider.options"></rzslider>
+        <input type="range" min="0" max="100" ng-model="wine.score" />
+       <br>
+       <!--  <i class="fa fa-save" style="float:right;margin-top:2px;color:#2aadce;" ng-click="saveScore()"> SAVE</i> -->
+        
+      </li>
+      <li>Community <br /><strong>{{avgCommunity}}</strong>
+        <div class="progress">
+          <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow={{avgCommunity}} aria-valuemin="0" aria-valuemax="100" style="width: 72%;">
+          </div>
+        </div>
+        <!-- <input type="range" disabled> -->
+        <!-- <input type="range" min="0" max="100" value="72" ng-model="qty.qty" /> -->
+      </li>
+      <li class="map-view">
+        <div class="world-map-blue-icon"></div>
+        <!-- <img src="/modules/wine/client/images/world-map-blue-icon.png"> -->
+        <div class="overlay">
+          <a href="#" class="bt1" ng-click="showMapView(wine.wine_id)">View On Map</a>
+        </div>
+
+        <span class="produced_in">Produced In</span>
+        <strong>{{wine.wine_id.sub_region}}, {{wine.wine_id.region}}</strong> 
+        <span class="france">{{wine.wine_id.country_code}}</span>
+      </li>
+    </ul>
+  </div>
+  <div class="delivered_location clierfix" >
+    <table class="table">
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_1.png" />Status</td>
+        <td><strong>{{wine.delivery_status}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_2.png" />Location </td>
+        <td><strong>{{wine.cellar_id.cellar_name}}</strong></td>
+      </tr>
+
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_3.png" />Date</td>
+        <td><strong>{{wine.purchase_date | date:'mediumDate'}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_4.png" />Bottle Price </td>
+        <td><strong>{{wine.avg_cost_price | setDecimal:2 }}</strong></td>
+      </tr>
+
+
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_5.png" />Bottle Size</td>
+        <td><strong>{{wine.wine_id.bottle_size}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_6.png" />Quantity </td>
+        <td>
+          <strong ng-if="wine.quantity>1">{{wine.quantity}} Bottles</strong>
+          <strong ng-if="wine.quantity<2">{{wine.quantity}} Bottle</strong>
+        </td>
+      </tr>
+
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_7.png" />Vintage </td>
+        <td><strong>{{wine.wine_id.vintage_year}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_8.png" />Cork Condition </td>
+        <td><strong>{{wine.bottle_properties.cork_condition}}</strong></td>
+      </tr>
+
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_9.png" />Classification</td>
+        <td><strong>{{wine.wine_id.classification}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_11.png" />Fill levels</td>
+        <td><strong>{{wine.bottle_properties.fill_level}}</strong></td>
+      </tr>
+
+
+      <tr>
+        <td><img src="/modules/wine/client/images/tr_12.png" />Varietal</td>
+        <td><strong>{{wine.wine_id.wine_varietal}}</strong></td>
+        <td><img src="/modules/wine/client/images/tr_12.png" />Label Condition</td>
+        <td><strong>{{wine.bottle_properties.label_condition}}</strong></td>
+      </tr>
+    </table>
+  </div><!--delivered_location-->

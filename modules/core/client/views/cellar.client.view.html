@@ -1,0 +1,76 @@
+<div class="body" ng-controller="CellarController" ng-init="getMyCellars()">
+  <header ng-include="'/modules/core/client/views/header-cellars.client.view.html'"></header>
+  <div class="inventory">
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="asing_count">
+            <li class="active"><a href="">My Cellars</a></li>
+            <!-- <li><a href="">Shared Cellars</a></li> -->
+          </ul>
+        </div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <ul class="search_de_icon">
+            <li><a href="#" class="trash" ng-click="addCellar();"><i class="fa fa-plus"></i></a></li>
+            <li>
+              <form class="search" action="" method="get">
+                <span class="search_box">
+                  <input name="s" id="s" type="text" value="" placeholder="Search" ng-model="cellarFilter" />
+                </span>
+                <span class="sub_mit_text">
+                  <a href=""><i class="fa fa-search"></i></a>
+                </span>
+              </form>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="inventory_prodact_price">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="table_price_list">
+          <table class="main-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>City / Town</th>
+                <th>State</th>
+                <th>Post Code</th>
+                <th>Country</th>
+                <th>Inventory</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <body>
+              <tr ng-click="showDetails(cellar._id);" ng-repeat="cellar in cellars | filter:cellarFilter">
+                <td>{{cellar.cellar_name}}</td>
+                <td>{{cellar.address_line1}}, {{cellar.address_line2}}</td>
+                <td>{{cellar.city}}</td>
+                <td>{{cellar.state}}</td>
+                <td>{{cellar.postcode}}</td>
+                <td>{{cellar.country}}</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </body>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div><!--inventory_prodact_price-->
+</div>
+
+<script type="text/ng-template" id="addCellar.html">
+  <div ng-include src="'/modules/cellars/client/views/cellar.client.view.html'"></div>
+</script>
+
+<script type="text/ng-template" id="viewCellarDetails.html">
+  <div ng-include src="'/modules/cellars/client/views/view-cellar.client.view.html'"></div>
+</script>

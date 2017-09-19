@@ -1,0 +1,21 @@
+<section >
+  <div class="modal-header user-header">
+    <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+    <h2 class="modal-title" id="AccountSetting_tabs"> Cellar Title</h2>
+  </div>
+ 
+    <div class="modal-body user_setting view-cellar">
+     <tabset>
+      <tab>
+        <tab-heading> Cellar Details</tab-heading>
+        <div class="wine-details" ng-include src="'/modules/cellars/client/views/view-cellar.details.client.view.html'"></div>
+      </tab>
+
+      <tab>
+        <tab-heading>Sharing Setting</tab-heading>
+        <div class="wine-details" ng-include src="'/modules/cellars/client/views/view-sharing.details.client.view.html'"></div>
+      </tab>
+
+    </tabset>
+  </div>
+</section>

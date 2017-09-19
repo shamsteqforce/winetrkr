@@ -1,0 +1,41 @@
+<section>
+  <div class="modal-header user-header">
+    <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+    <h2 class="modal-title" id="AccountSetting_tabs"> Add New Wine</h2>
+  </div>
+
+  <div class="modal-body user_setting add-new-wine">
+
+<!-- <uib-tabset active="active">
+    <uib-tab index="0" heading="Static title">Static content</uib-tab>
+    <uib-tab index="$index + 1" ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disable="tab.disabled">
+      {{tab.content}}
+    </uib-tab>
+    <uib-tab index="3" select="alertMe()">
+      <uib-tab-heading>
+        <i class="glyphicon glyphicon-bell"></i> Alert!
+      </uib-tab-heading>
+      I've got an HTML heading, and a select callback. Pretty cool!
+    </uib-tab>
+  </uib-tabset> -->
+
+
+<uib-tabset active="active">
+<uib-tab index="0" heading="Wine Details">
+<div class="wine-details" ng-include src="'/modules/wine/client/views/wine.details.client.view.html'"></div>
+</uib-tab>
+
+<uib-tab index="1" heading="Bottle Details" disable='bottleDetails'>
+<div class="wine-details" ng-include src="'/modules/wine/client/views/bottle.details.client.view.html'"></div>
+</uib-tab>
+</uib-tabset>
+</div>
+</section>
+
+<script type="text/ng-template" id="addCellar.html">
+  <div ng-include src="'/modules/cellars/client/views/cellar.client.view.html'"></div>
+</script>
+
+
+
+

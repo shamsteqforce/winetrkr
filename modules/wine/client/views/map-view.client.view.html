@@ -1,0 +1,48 @@
+
+
+<section>
+  <div class="modal-header user-header">
+    <button type="button" title="Close" data-placement="top" data-toggle="tooltip" class="close" data-dismiss="modal" ng-click="close()" aria-label="Close">x</button>
+    <h2 class="modal-title" id="AccountSetting_tabs">{{wine.producer}}</h2>
+  </div>
+
+  <div class="modal-body map-view">
+  <img src="modules/wine/client/images/map.png">
+    <div class="accountseting_row view-row clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label>Producer</label>
+        <h3>{{wine.producer}}</h3>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label>Wine</label>
+        <h3>{{wine.wine_name}}</h3>
+      </div>
+    </div><!--accountseting_row-->
+    <div class="accountseting_row view-row clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label>Country</label>
+        <h3>{{wine.country_code}}</h3>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label>Region</label>
+        <h3>{{wine.region}}</h3>
+      </div>
+    </div><!--accountseting_row-->
+    <div class="accountseting_row view-row clearfix">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <label>Sub-Region</label>
+        <h3>{{wine.sub_region}}</h3>
+      </div>
+
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <!-- <label>District</label> -->
+        <h3></h3>
+      </div>
+    </div><!--accountseting_row-->
+  </div>
+</section>
+
+
+

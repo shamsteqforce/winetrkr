@@ -1,0 +1,35 @@
+<div class="accountsetting_tabs detalis" ng-init="findWines()">
+  <div class="panel panel-default">
+    <div class="input-group col-md-12 ">
+      <input type="text" class="form-control col-md-12 input-lg" style="border: medium hidden; padding-left: 45px; height: 60px; margin-bottom: -25px;" placeholder="Search for..." ng-model="myFilter">
+      <span style="position: relative; left: 15px; z-index: 100; bottom: 13px;"><i class="fa fa-search fa-2x"></i></span>
+    </div>
+
+    <table class="table table-striped table-condensed" style="margin-bottom: 0px;">
+    <!--  <tr ng-repeat="wine in wines | filter: myFilter">
+       <td width="50"><input type="checkbox" ng-model="wine.selected"></td>
+       <td>{{wine.wine_id.producer}}</td>
+       <td>{{wine.wine_id.wine_name}}</td>
+       <td>{{wine.quantity}}</td>
+       <td>{{wine.avg_cost_price | setDecimal:2}}</td>
+     </tr> -->
+
+      <tr ng-repeat="transaction in displayTransaction |filter: myFilter track by $index">
+       <td width="50"><input type="checkbox" ng-model="transaction.selected"></td>       
+       <td>{{transaction.producer_name}}</td>
+       <td>{{transaction.wine_name}}</td>
+       <td>{{transaction.quantity}}</td>
+       <td>{{transaction.price | setDecimal:2}}</td>
+     </tr>
+
+   </table>
+ </div>
+  <div class="modal-footer login save clearfix">
+  <div class="col-md-6 col-sm-6 col-xs-12 footer border-right border-top">
+    <a href="#" class="btn btn-lg save" ng-click="close()">Delete Receipt</a>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12 footer">
+   <a href="#"class="show-signup btn-lg" ng-click="selectedProducer()"  ng-disabled="isDisabled">Save Changes</a>
+ </div>
+</div>
+</div>
